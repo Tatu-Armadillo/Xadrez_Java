@@ -1,5 +1,8 @@
+import tabuleiro.Tabuleiro;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+        tabuleiro.createTabuleiro();
     }
 }
