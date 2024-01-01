@@ -1,8 +1,8 @@
-import tabuleiro.Tabuleiro;
+import tabuleiro.Board;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Tabuleiro tabuleiro = new Tabuleiro(8, 8);
-        tabuleiro.createTabuleiro();
+        Board board = new Board(8, 8);
+        board.createBoard();
     }
 }
