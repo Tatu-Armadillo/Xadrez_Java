@@ -7,9 +7,8 @@ public abstract class Part {
     private Color color;
     private Board board;
 
-    public Part(
+    protected Part(
             final Color color,
-            final Position position,
             final Board board) {
         this.quantyMoviments = 0;
         this.position = null;
@@ -24,6 +23,24 @@ public abstract class Part {
     public void decreaseMovements() {
         this.quantyMoviments--;
     }
+
+    public Boolean existpossibleMovements() {
+        Boolean[][] mat = possibleMovements();
+        for (int i = 0; i < board.getQuantityLine(); i++) {
+            for (int j = 0; j < board.getQuantityColumn(); j++) {
+                if (Boolean.TRUE.equals(mat[i][j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Boolean possibleMovement(final Position position) {
+        return possibleMovements()[position.getLine()][position.getColumn()];
+    }
+
+    public abstract Boolean[][] possibleMovements();
 
     public Color getColor() {
         return color;
