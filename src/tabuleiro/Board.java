@@ -4,10 +4,15 @@ public class Board {
 
     private final Integer quantityLine;
     private final Integer quantityColumn;
+    private final Part[][] parts;
 
-    public Board(final Integer quantityLine, final Integer quantityColumn) {
+    public Board(
+            final Integer quantityLine,
+            final Integer quantityColumn,
+            final Part[][] parts) {
         this.quantityLine = quantityLine;
         this.quantityColumn = quantityColumn;
+        this.parts = parts;
     }
 
     public Integer getQuantityLine() {
@@ -16,6 +21,28 @@ public class Board {
 
     public Integer getQuantityColumn() {
         return quantityColumn;
+    }
+
+    public Part returnedPart(Integer line, Integer column) {
+        return parts[line][column];
+    }
+
+    public Boolean validPosicao(Position position) throws BoardException {
+        if (position.getLine() < 0
+                || position.getLine() >= quantityLine
+                || position.getColumn() < 0
+                || position.getColumn() >= quantityColumn) {
+            throw new BoardException("Invalid Position");
+        }
+        return true;
+    }
+
+    public void removePart(Position position) {
+        Part part = returnedPart(position.getLine(), position.getColumn());
+        if(part != null) {
+            part.setPosition(null);
+            parts[position.getLine()][position.getColumn()] = null;
+        }
     }
 
     public void createBoard() {
