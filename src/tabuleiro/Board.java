@@ -39,18 +39,23 @@ public class Board {
 
     public void removePart(Position position) {
         Part part = returnedPart(position.getLine(), position.getColumn());
-        if(part != null) {
+        if (part != null) {
             part.setPosition(null);
             parts[position.getLine()][position.getColumn()] = null;
         }
     }
 
     public void createBoard() {
-        StringBuilder strb = new StringBuilder();
+        final StringBuilder strb = new StringBuilder();
         for (Integer i = 1; i <= quantityLine; i++) {
             strb.append(i.toString());
             for (Integer j = 1; j <= quantityColumn; j++) {
-                strb.append(" =");
+                Part part = parts[i - 1][j - 1];
+                if (part != null) {
+                    strb.append(" " + part.toString());
+                } else {
+                    strb.append(" =");
+                }
             }
             strb.append("\n");
         }
