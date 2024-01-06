@@ -6,12 +6,12 @@ import tabuleiro.pices.Pawn;
 public class App {
     public static void main(String[] args) throws Exception {
         Part[][] parts = new Part[8][8];
+        Board board = new Board(8, 8, parts);
 
         for (int i = 0; i < 8; i++) {
-            parts[1][i] = new Pawn(Color.WHITE, null);
+            parts[1][i] = new Pawn(Color.WHITE, board);
         }
 
-        Board board = new Board(8, 8, parts);
         board.createBoard();
     }
 }

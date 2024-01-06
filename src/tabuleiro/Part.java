@@ -24,8 +24,8 @@ public abstract class Part {
         this.quantyMoviments--;
     }
 
-    public Boolean existpossibleMovements() {
-        Boolean[][] mat = possibleMovements();
+    public boolean existpossibleMovements() {
+        boolean[][] mat = possibleMovements();
         for (int i = 0; i < board.getQuantityLine(); i++) {
             for (int j = 0; j < board.getQuantityColumn(); j++) {
                 if (Boolean.TRUE.equals(mat[i][j])) {
@@ -36,11 +36,11 @@ public abstract class Part {
         return false;
     }
 
-    public Boolean possibleMovement(final Position position) {
+    public boolean possibleMovement(final Position position) {
         return possibleMovements()[position.getLine()][position.getColumn()];
     }
 
-    public abstract Boolean[][] possibleMovements();
+    public abstract boolean[][] possibleMovements();
 
     public Color getColor() {
         return color;

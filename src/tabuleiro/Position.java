@@ -2,10 +2,15 @@ package tabuleiro;
 
 public class Position {
 
-    public final Integer line;
-    public final Integer column;
+    private Integer line;
+    private Integer column;
 
-    public Position(final Integer line, final  Integer column) {
+    public Position(Integer line, Integer column) {
+        this.line = line;
+        this.column = column;
+    }
+
+    public void newPosition(Integer line, Integer column) {
         this.line = line;
         this.column = column;
     }
@@ -17,7 +22,7 @@ public class Position {
     public Integer getColumn() {
         return this.column;
     }
-    
+
     @Override
     public String toString() {
         return this.line + ", " + this.column;

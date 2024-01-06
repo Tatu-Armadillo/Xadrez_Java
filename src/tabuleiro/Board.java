@@ -27,18 +27,23 @@ public class Board {
         return parts[line][column];
     }
 
-    public Boolean validPosicao(Position position) throws BoardException {
+    public Part returnedPart(Position position) {
+        return returnedPart(position.getLine(), position.getColumn());
+    }
+
+    public boolean validPosicao(Position position) {
         if (position.getLine() < 0
                 || position.getLine() >= quantityLine
                 || position.getColumn() < 0
                 || position.getColumn() >= quantityColumn) {
-            throw new BoardException("Invalid Position");
+            // throw new BoardException("Invalid Position");
+            return false;
         }
         return true;
     }
 
     public void removePart(Position position) {
-        Part part = returnedPart(position.getLine(), position.getColumn());
+        Part part = returnedPart(position);
         if (part != null) {
             part.setPosition(null);
             parts[position.getLine()][position.getColumn()] = null;
